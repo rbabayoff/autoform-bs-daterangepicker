@@ -1,6 +1,6 @@
 Package.describe({
   name: 'antalakas:autoform-bs-daterangepicker',
-  version: '0.1.2',
+  version: '0.1.3',
   summary: 'Enables usage of bootstrap daterangepicker in autoform',
   git: 'https://github.com/antalakas/autoform-bs-daterangepicker',
   documentation: 'README.md'
@@ -9,14 +9,14 @@ Package.describe({
 Package.onUse(function(api) {
   api.versionsFrom(['METEOR@0.9.3', 'METEOR@0.9.4', 'METEOR@1.0']);
 
-  api.use('standard-app-packages', ['client', 'server']);
-  api.use('bootstrap@0.3.1');
-  api.use('aldeed:autoform@4.0.0 || 5.0.0');
+  api.use('meteor-platform');
+  api.use('momentjs:moment');
+  api.use('aldeed:autoform@5.3.1');
 
-  api.addFiles('lib/moment.js', 'client');
+  api.imply('momentjs:moment');
 
   api.addFiles('lib/daterangepicker-bs3.css', 'client');
-  api.addFiles('lib/daterangepicker-bs2.css', 'client');
+  //api.addFiles('lib/daterangepicker-bs2.css', 'client');
   api.addFiles('lib/daterangepicker.js', 'client');
 
   api.addFiles('autoform-bs-daterangepicker.html', 'client');
