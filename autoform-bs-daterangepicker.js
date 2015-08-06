@@ -1,19 +1,31 @@
+log = new ObjectLogger('bootstrap-daterangepicker', 'debug');
+
 var range = {};
 
 AutoForm.addInputType('bootstrap-daterangepicker', {
   template: 'afBootstrapDateRangePicker',
   valueOut: function () {
-    if (range.startDate && range.endDate)
-      return [range.startDate.toDate(), range.endDate.toDate()];
-    else
-      return [];
-  },
-  valueConverters: {
-    "dateArray": function (val) {
+    try {
+      log.enter('valueOut', this, range);
       if (range.startDate && range.endDate)
         return [range.startDate.toDate(), range.endDate.toDate()];
       else
         return [];
+    } finally {
+      log.return();
+    }
+  },
+  valueConverters: {
+    "dateArray": function (val) {
+      try {
+        log.enter('valueConverters', this, range, arguments);
+        if (range.startDate && range.endDate)
+          return [range.startDate.toDate(), range.endDate.toDate()];
+        else
+          return [];
+      } finally {
+        log.return();
+      }
     }
   }
 });
